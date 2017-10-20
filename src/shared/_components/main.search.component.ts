@@ -183,7 +183,7 @@ export class MainSearchComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    // unsubscribe on destroy to prevent memory leaks
+    // un subscribe on destroy to prevent memory leaks
     this.typeAheadEventEmitter.unsubscribe();
   }
 }

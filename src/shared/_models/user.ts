@@ -31,4 +31,20 @@
   public getId() {
     return this.id;
   }
+
+  public setFirstName(firstName: string) {
+    this.firstName = firstName;
+  }
+
+  public setLastName(lastName: string) {
+    this.lastName = lastName;
+  }
+
+  public setUsername(username: string) {
+    this.username = username;
+  }
+
+  public setId(id: number) {
+    this.id = id;
+  }
 }
