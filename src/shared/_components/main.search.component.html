@@ -1,0 +1,17 @@
+﻿<div id="main-search-wrapper" (clickOutside)="onClickedOutsideMainSearch($event)">
+  <div class="input-area">
+      <input [(ngModel)]="searchText" (keydown)="keyDownMainSearch($event)" (ngModelChange)="searchTyped($event)"
+           class="form-control" name="searchText">
+  </div>
+  <div class="list-area-wrapper">
+    <div class="list-area">
+      <div *ngFor="let item of searchedItems ; let i = index" class="list-item">
+        <span class="font-600" (click)="itemClicked(item, 0)">
+          <div class="main-text" [ngClass]="{'highlighted' : indexHighlighted === i }" [innerHTML]="item.displayName"></div>
+        </span>
+        <div class="secondary-text" (click)="itemClicked(item, 1)" [innerHTML]="'in ' + item.category.name"
+             *ngIf="i == 0 && item.category && item.category.name"></div>
+      </div>
+    </div>
+  </div>
+</div>

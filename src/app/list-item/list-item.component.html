@@ -1,0 +1,9 @@
+<div id="list-item-wrapper" (mouseenter) ="showQuickViewButton = true" (mouseleave)="showQuickViewButton = false">
+  <mat-card class="inside-wrapper">
+    <div class="image">
+
+    </div>
+    <h4>Title</h4>
+    <button [ngClass]="{'hidden' : !showQuickViewButton }" class="quick-view-button hide-for-small-only" mat-raised-button (click)="openDialog()">Show Quick View</button>
+  </mat-card>
+</div>

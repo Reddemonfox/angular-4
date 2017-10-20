@@ -1,0 +1,18 @@
+<div id="list-quick-view-wrapper" class="container">
+  <div class="row">
+    <div class="col-md-6 col-xs-12 no-p">
+      <div class="image">
+
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <h4>Title For this product</h4>
+      <div class="close-button" (click)="onClose('NO')">
+        <mat-icon>close</mat-icon>
+      </div>
+    </div>
+  </div>
+    <div class="row related-items" [ngClass]="{'active': showRelatedItems}">
+
+  </div>
+</div>
