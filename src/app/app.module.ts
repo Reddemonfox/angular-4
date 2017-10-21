@@ -28,6 +28,7 @@ import {MainSearchComponent} from '../shared/_components/main.search.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ListItemComponent, ListItemQuickViewComponent} from './list-item/list-item.component';
 import { BannerSliderComponent } from './banner-slider/banner-slider.component';
+import {ImageZoomModule} from 'angular2-image-zoom';
 
 export function HttpLoaderFactory( http: HttpClient) {
   return new TranslateHttpLoader(http, 'translations/', '-lang.json');
@@ -49,6 +50,7 @@ export function HttpLoaderFactory( http: HttpClient) {
     MatIconModule,
     HttpClientModule,
     ClickOutsideModule,
+    ImageZoomModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

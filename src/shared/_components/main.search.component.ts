@@ -1,5 +1,6 @@
-﻿import { Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+﻿import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as Rx from 'rxjs/Rx';
+
 @Component({
   moduleId: module.id,
   selector: 'app-main-search',
@@ -102,13 +103,15 @@ export class MainSearchComponent implements OnDestroy, OnInit {
         name: 'Category 1'
       }
     }
-    ];
+  ];
   indexHighlighted = -1;
   tempSearchedText: string;
   searchedItems: any = [];
+
   constructor() {
     // this.searchedItems = this.items;
   }
+
   searchTyped(event: Event): void {
     this.tempSearchedText = String(event);
     this.typeAheadEventEmitter.next(String(event));
@@ -126,40 +129,43 @@ export class MainSearchComponent implements OnDestroy, OnInit {
       if ((this.searchedItems.length) < this.indexHighlighted) {
         this.indexHighlighted = 0;
         this.searchText = this.tempSearchedText;
-      }else if ((this.searchedItems.length - 1) < this.indexHighlighted) {
-          this.indexHighlighted = this.searchedItems.length;
-          this.searchText = this.tempSearchedText;
-      }else {
+      } else if ((this.searchedItems.length - 1) < this.indexHighlighted) {
+        this.indexHighlighted = this.searchedItems.length;
+        this.searchText = this.tempSearchedText;
+      } else {
         this.searchText = this.searchedItems[this.indexHighlighted].name;
       }
       event.preventDefault();
     }
     if (event['keyCode'] === 38 && this.searchedItems.length) {
       this.indexHighlighted--;
-      if (this.indexHighlighted < -1 ) {
+      if (this.indexHighlighted < -1) {
         this.indexHighlighted = this.searchedItems.length - 1;
         this.searchText = this.tempSearchedText;
-      }else if (this.indexHighlighted < 0 ) {
+      } else if (this.indexHighlighted < 0) {
         this.indexHighlighted = -1;
         this.searchText = this.tempSearchedText;
-      }else {
+      } else {
         this.searchText = this.searchedItems[this.indexHighlighted].name;
       }
       event.preventDefault();
     }
   }
+
   itemClicked(item, index = 0): void {
     this.searchText = this.tempSearchedText = item.name;
     this.searchedItems = [];
   }
+
   ngOnInit() {
     this.typeAheadEventEmitter
       .debounceTime(400)
       .subscribe(results => {
-      this.applyFilter(results);
-    }, error => {
-    });
+        this.applyFilter(results);
+      }, error => {
+      });
   }
+
   applyFilter(val: string) {
     const result = [];
     const valToCheck = val.replace(/\s/g, '').toLocaleLowerCase();
@@ -171,7 +177,8 @@ export class MainSearchComponent implements OnDestroy, OnInit {
     for (const i in this.items) {
       if (this.items[i].name.replace(/\s/g, '').indexOf(valToCheck) > -1) {
         item = this.items[i];
-        item['displayName'] = item['name'].replace(val.toLocaleLowerCase(), '<span class="font-400">' + val + '</span>');
+        item['displayName'] = item['name']
+          .replace(val.toLocaleLowerCase(), '<span class="font-400">' + val.toLocaleLowerCase() + '</span>');
         result.push(item);
       }
     }
