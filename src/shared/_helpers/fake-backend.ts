@@ -69,8 +69,8 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           // find user by id in users array
           const urlParts = connection.request.url.split('/');
           const id = parseInt(urlParts[urlParts.length - 1], 10);
-          const matchedUsers = users.filter(user => {
-            return user.id === id;
+          const matchedUsers = users.filter(u => {
+            return u.id === id;
           });
           const user = matchedUsers.length ? matchedUsers[0] : null;
 

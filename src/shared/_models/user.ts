@@ -4,12 +4,14 @@
   password: string;
   firstName: string;
   lastName: string;
+  token: string;
 
   constructor(user: any) {
     this.id = user.id;
     this.username = user.username;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
+    this.token = user.token;
   }
 
   public getFullName() {
@@ -32,6 +34,10 @@
     return this.id;
   }
 
+  public getToken() {
+    return this.token;
+  }
+
   public setFirstName(firstName: string) {
     this.firstName = firstName;
   }
@@ -46,5 +52,9 @@
 
   public setId(id: number) {
     this.id = id;
+  }
+
+  public setToken(token: string) {
+    this.token = token;
   }
 }

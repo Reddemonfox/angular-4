@@ -1,16 +1,18 @@
 <div id="banner-slider-wrapper">
-  <mat-card class="main-image">
-    <div class="arrows left-arrow">
+  <mat-card class="main-image" [ngStyle]="{'background-image': 'url(' + imageList[activeIndex].url + ')'}">
+    <div class="arrows left-arrow" (click)="scrollBanner(-1)">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </div>
-    <div class="arrows right-arrow">
+    <div class="arrows right-arrow" (click)="scrollBanner(1)">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </div>
   </mat-card>
   <div class="slider">
-    <mat-card class="thumb col-xs-3"></mat-card>
-    <mat-card class="thumb col-xs-3 active"></mat-card>
-    <mat-card class="thumb col-xs-3"></mat-card>
-    <mat-card class="thumb col-xs-3"></mat-card>
+    <mat-card *ngFor="let image of imageList; let i = index;"
+              class="thumb col-xs-3"
+              (click)="scrollBanner(0, i)"
+              [ngStyle]="{'background-image': 'url(' + image.url + ')'}"
+              [ngClass]="{'active' : activeIndex === i}"
+    ></mat-card>
   </div>
 </div>
