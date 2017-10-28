@@ -19,7 +19,7 @@ import {GlobalService} from '../shared/_services/global.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatCardModule, MatListModule,
-  MatDialogModule, MatDialog, MatDialogRef, MatIconModule
+  MatDialogModule, MatDialog, MatDialogRef, MatIconModule, MatMenuModule
 } from '@angular/material';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -51,6 +51,7 @@ export function HttpLoaderFactory( http: HttpClient) {
     HttpClientModule,
     ClickOutsideModule,
     ImageZoomModule,
+    MatMenuModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

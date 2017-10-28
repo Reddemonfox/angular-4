@@ -1,7 +1,15 @@
-﻿<div class="col-md-6 col-md-offset-3">
+﻿﻿<div class="col-md-6 col-md-offset-3">
 
   <mat-card>
-    <h2>Login</h2>
+    <h2>{{'LOGIN' | translate}}</h2>
+    <div *ngIf="availableLanguages.length">
+      <hr>
+      <button mat-raised-button [matMenuTriggerFor]="languageMenu" >Language</button>
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item *ngFor="let lang of availableLanguages" (click)="changeLanguage(lang)">{{lang.name}}</button>
+      </mat-menu>
+      <hr>
+    </div>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate >
       <mat-form-field class="full-width">
         <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" #username="ngModel" >
@@ -14,11 +22,11 @@
       <br>
 
       <button mat-raised-button [disabled]="loading">
-        <span *ngIf="!loading">Login</span>
+        <span *ngIf="!loading">{{'LOGIN' | translate}}</span>
         <img *ngIf="loading"
              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
       </button>
-      <a [routerLink]="['/register']" class="btn b  tn-link">Register</a>
+      <a [routerLink]="['/register']" class="btn b  tn-link">{{'REGISTER' | translate}}</a>
     </form>
   </mat-card>
 

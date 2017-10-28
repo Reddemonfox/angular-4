@@ -1,8 +1,9 @@
-﻿import { Component } from '@angular/core';
+﻿﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import {UserService} from '../../../shared/_services/user.service';
 // import {AlertService} from '../../../shared/_services/alert.service';
 import {AlertService , UserService} from '../../../shared/_services/index';
+import {Alert, AlertType} from '../../../shared/_models/index';
 
 
 @Component({
@@ -24,11 +25,13 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                  const alert = new Alert({type: AlertType.Info, message: 'Registration successful'});
+                    this.alertService.show(alert, true);
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
+                  const alert = new Alert({type: AlertType.Error, message: error});
+                  this.alertService.show(alert);
                     this.loading = false;
                 });
     }
